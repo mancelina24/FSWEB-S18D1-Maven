@@ -54,9 +54,9 @@ public interface OgrenciRepository extends JpaRepository<Ogrenci, Long> {
     List<StudentClassCount> findStudentClassCount();
 
     //Her öğrencinin ad soyad karşılığında okuduğu kitap sayısını getiriniz.
-    String QUESTION_9 = "select o.ogrno, o.ad, o.soyad, count(i.kitapno) from ogrenci o\n" +
+    String QUESTION_9 = "select o.ad, o.soyad, count(i.kitapno) from ogrenci o\n" +
             "join islem i on i.ogrno=o.ogrno\n" +
-            "group by o.ogrno";
+            "group by o.ad, o.soyad";
     @Query(value = QUESTION_9, nativeQuery = true)
     List<StudentNameSurnameCount> findStudentNameSurnameCount();
 }
